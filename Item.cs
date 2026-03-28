@@ -8,9 +8,12 @@ namespace Inventory {
 		}
 		
 		public string Name {get; }
-		public int Weight {get; }
+		public double Weight {get; }
 		public string Rarity {get; }
 		
 		public abstract void Use(Hero hero);
+		public virtual void GetInfo() {
+			Console.WriteLine($"[{Rarity}] {Name} (weight: {Weight})");
+		}
 	}
 }
