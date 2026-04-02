@@ -15,5 +15,12 @@ namespace Inventory {
 			Defense = 10;
 			Inventory = new Inventory<Item>(50);
 		}
+
+		public string GetHeroInfo() => $"Hero {Name} (HP: {HP}, ATK: {Attack}, DEF: {Defense})";
+
+		public void ShowInventory() {
+			Console.WriteLine($"Inventory | {GetHeroInfo()})");
+			Inventory.PrintInventory();
+		}
 	}
 }
