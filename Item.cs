@@ -12,16 +12,17 @@ namespace Inventory {
 		public double Weight {get; }
 		public Rarity Rarity {get; }
 		
-		public int CompareTo(Item other) {
-			if (other == null) return 1;
-			return this.Rarity.CompareTo(other.Rarity);
-        }
 
 		public Item(string name, double weight, Rarity rarity) {
 			Name = name;
 			Weight = weight;
 			Rarity = rarity;
 		}
+		
+		public int CompareTo(Item other) {
+			if (other == null) return 1;
+			return this.Rarity.CompareTo(other.Rarity);
+        }
 		
 		public abstract void Use(Hero hero);
 		public virtual string GetInfo() {
