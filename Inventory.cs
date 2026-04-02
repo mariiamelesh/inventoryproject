@@ -5,8 +5,29 @@ using System.Linq;
 
 namespace Inventory {
 	public class Inventory<T> : IEnumerable<T> where T : Item {
+		private List<Item> _gameItems = new List<Item> {
+
+			new Weapon("Rusty Sword", 5.0, Rarity.Common, 5.0),
+			new Weapon("Dragon Slayer", 12.0, Rarity.Legendary, 45.0),
+			new Weapon("Shadow Dagger", 2.5, Rarity.Epic, 18.0),
+			new Weapon("Hunter's Bow", 4.0, Rarity.Rare, 12.0),
+
+			new Armor("Leather Vest", 6.0, Rarity.Common, 4.0),
+			new Armor("Paladin's Plate", 18.0, Rarity.Legendary, 40.0),
+			new Armor("Iron Shield", 10.0, Rarity.Rare, 15.0),
+			new Armor("Cloak of Shadows", 1.5, Rarity.Epic, 8.0),
+
+			new Potion("Minor Health Potion", 0.5, Rarity.Common, 20.0),
+			new Potion("Greater Healing Elixir", 1.0, Rarity.Epic, 50.0),
+			new Potion("Ancient Life Essence", 1.5, Rarity.Legendary, 100.0)
+		};
+		
 		private List <T> _inventory = new List<T>();
-		private const double capacity = 50;
+		private double _capacity;
+		
+		public Inventory(double capacity) {
+			_capacity = capacity;
+		}
 		
 		
 		public IEnumerator<T> GetEnumerator() 
@@ -21,7 +42,7 @@ namespace Inventory {
 
 
 		private double FreeSpace() {
-			return capacity - _inventory.Sum(item => item.Weight);
+			return _capacity - _inventory.Sum(item => item.Weight);
 		}
 
 		public void Add(T item) {
@@ -63,7 +84,7 @@ namespace Inventory {
 
 		public void ShowCapacity() {
 			double freeSpace = FreeSpace();
-			Console.WriteLine($"Inventory weight: {capacity - freeSpace} / {capacity}");
+			Console.WriteLine($"Inventory weight: {_capacity - freeSpace} / {_capacity}");
 		}
 	}
 }
