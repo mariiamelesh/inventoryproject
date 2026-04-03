@@ -5,28 +5,29 @@ using System.Linq;
 
 namespace Inventory {
 	public class Inventory<T> : IEnumerable<T> where T : Item {
-		private List<Item> _gameItems = new List<Item> {
-
-			new Weapon("Rusty Sword", 5.0, Rarity.Common, 5.0),
-			new Weapon("Dragon Slayer", 12.0, Rarity.Legendary, 45.0),
-			new Weapon("Shadow Dagger", 2.5, Rarity.Epic, 18.0),
-			new Weapon("Hunter's Bow", 4.0, Rarity.Rare, 12.0),
-
-			new Armor("Leather Vest", 6.0, Rarity.Common, 4.0),
-			new Armor("Paladin's Plate", 18.0, Rarity.Legendary, 40.0),
-			new Armor("Iron Shield", 10.0, Rarity.Rare, 15.0),
-			new Armor("Cloak of Shadows", 1.5, Rarity.Epic, 8.0),
-
-			new Potion("Minor Health Potion", 0.5, Rarity.Common, 20.0),
-			new Potion("Greater Healing Elixir", 1.0, Rarity.Epic, 50.0),
-			new Potion("Ancient Life Essence", 1.5, Rarity.Legendary, 100.0)
-		};
+		public List<Item> GameItems {get; private set; }
 		
 		private List <T> _inventory = new List<T>();
 		private double _capacity;
 		
 		public Inventory(double capacity) {
 			_capacity = capacity;
+			GameItems = new List<Item> {
+
+				new Weapon("Rusty Sword", 5.0, Rarity.Common, 5.0),
+				new Weapon("Dragon Slayer", 12.0, Rarity.Legendary, 45.0),
+				new Weapon("Shadow Dagger", 2.5, Rarity.Epic, 18.0),
+				new Weapon("Hunter's Bow", 4.0, Rarity.Rare, 12.0),
+
+				new Armor("Leather Vest", 6.0, Rarity.Common, 4.0),
+				new Armor("Paladin's Plate", 18.0, Rarity.Legendary, 40.0),
+				new Armor("Iron Shield", 10.0, Rarity.Rare, 15.0),
+				new Armor("Cloak of Shadows", 1.5, Rarity.Epic, 8.0),
+
+				new Potion("Minor Health Potion", 0.5, Rarity.Common, 20.0),
+				new Potion("Greater Healing Elixir", 1.0, Rarity.Epic, 50.0),
+				new Potion("Ancient Life Essence", 1.5, Rarity.Legendary, 100.0)
+			};
 		}
 		
 		
@@ -66,13 +67,13 @@ namespace Inventory {
 			}
 		}
 
-		public void GetByName(string name) {
-			Console.WriteLine($"Items with the name {name}:");
-
-			foreach (T item in _inventory) {
-				if (item.Name == name) {
-					Console.WriteLine(item.GetInfo());
-				}
+		public Item? GetByName(string name) {
+			var item = _inventory.FirstOrDefault(item => item.Name = name);
+			if (item == null) {
+				Console.WriteLine("No such item in inventory";
+				return null;
+			} else {
+				return item;
 			}
 		}
 
