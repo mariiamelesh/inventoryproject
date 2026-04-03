@@ -70,7 +70,7 @@ namespace Inventory {
 		public Item? GetByName(string name) {
 			var item = _inventory.FirstOrDefault(item => item.Name = name);
 			if (item == null) {
-				Console.WriteLine("No such item in inventory";
+				Console.WriteLine("No such item in inventory");
 				return null;
 			} else {
 				return item;
