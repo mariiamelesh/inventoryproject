@@ -49,10 +49,14 @@ namespace Inventory {
 			}
 		}
 		
-		private void ShowInventory() {}
+		private void ShowInventory() {
+			_hero.ShowInventory();
+		}
 		private void AddItem() {}
 		private void UseItem() {}
 		private void Sort() {} 
 		private void ShowInfo() {}
 	}
 }
+
+
