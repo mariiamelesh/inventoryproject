@@ -8,6 +8,7 @@ namespace Inventory {
 		public override void Use(Hero hero) {
 			hero.HP += Heal;
 			hero.Inventory.Remove(this);
+			Console.WriteLine($"Used {Name}! HP now {hero.HP}");
 		}
 
 		public override string GetInfo() {

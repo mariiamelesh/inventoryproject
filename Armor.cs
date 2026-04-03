@@ -7,6 +7,7 @@ namespace Inventory {
 
 		public override void Use(Hero hero) {
 			hero.Defense += Defense;
+			Console.WriteLine($"Used {Name}! Defense now +{hero.Defense}");
 		}
 
 		public override string GetInfo() {
