@@ -53,6 +53,15 @@ namespace Inventory {
 			_hero.ShowInventory();
 		}
 		private void AddItem() {
+			Console.WriteLine("Enter item name: ");
+			string name = Console.ReadLine() ?? "";
+			var item = _hero.Inventory.GameItems.FirstOrDefault(item => item.Name == name);
+			if (item == null) {
+				Console.WriteLine("No item with such name found");
+				return;
+			} else {
+				_hero.Inventory.Add(item);
+			}
 		}
 		private void UseItem() {
 			Console.WriteLine("Enter item name: ");
