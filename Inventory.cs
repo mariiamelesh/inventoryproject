@@ -87,5 +87,10 @@ namespace Inventory {
 			double freeSpace = FreeSpace();
 			Console.WriteLine($"Inventory weight: {_capacity - freeSpace} / {_capacity}");
 		}
+		
+		public void SortByRarity() {
+			_inventory.Sort();
+			PrintInventory();
+		}
 	}
 }
