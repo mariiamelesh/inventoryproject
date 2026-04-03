@@ -74,6 +74,8 @@ namespace Inventory {
 		private void Sort() {
 			_hero.Inventory.SortByRarity();
 		} 
-		private void ShowInfo() {}
+		private void ShowInfo() {
+			Console.WriteLine(_hero.GetHeroInfo());
+		}
 	}
 }
