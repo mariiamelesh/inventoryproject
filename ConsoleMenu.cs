@@ -52,11 +52,17 @@ namespace Inventory {
 		private void ShowInventory() {
 			_hero.ShowInventory();
 		}
-		private void AddItem() {}
-		private void UseItem() {}
+		private void AddItem() {
+		}
+		private void UseItem() {
+			Console.WriteLine("Enter item name: ");
+			string name = Console.ReadLine() ?? "";
+			var item = _hero.Inventory.GetByName(name);
+			if (item != null) {
+				item.Use(_hero);
+			}
+		}
 		private void Sort() {} 
 		private void ShowInfo() {}
 	}
 }
-
-
