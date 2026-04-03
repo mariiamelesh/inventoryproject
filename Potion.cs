@@ -6,9 +6,13 @@ namespace Inventory {
 		}
 
 		public override void Use(Hero hero) {
-			hero.HP += Heal;
-			hero.Inventory.Remove(this);
-			Console.WriteLine($"Used {Name}! HP now {hero.HP}");
+			if (hero.HP == 100) {
+				Console.WriteLine("HP is full! Can't use potion");
+			} else {
+				hero.HP += Heal;
+				hero.Inventory.Remove(this);
+				Console.WriteLine($"Used {Name}! HP now {hero.HP}");
+			}
 		}
 
 		public override string GetInfo() {

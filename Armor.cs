@@ -6,8 +6,12 @@ namespace Inventory {
 		}
 
 		public override void Use(Hero hero) {
-			hero.Defense += Defense;
-			Console.WriteLine($"Used {Name}! Defense now +{hero.Defense}");
+			if (hero.Defense == 100) {
+				Console.WriteLine("Defense is full! Cannot use more armor");
+			} else {
+				hero.Defense += Defense;
+				Console.WriteLine($"Used {Name}! Defense now +{hero.Defense}");
+			}
 		}
 
 		public override string GetInfo() {
